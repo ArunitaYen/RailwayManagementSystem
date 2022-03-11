@@ -15,6 +15,6 @@ Train:-
 
 Number Number, Name, Arrival Time, Departure Time, Availability of seats, Source, Destination, Seats, Fare No., Booked user, Status, Number of Passengers
 
-Tickets:-
+Tickets:-No., Booked user, Status, Number of Passengers
 
 ![ERD of reservation system](https://github.com/ArunitaYen/RailwayManagementSystem/blob/main/TrainReserve.PNG)
