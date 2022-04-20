@@ -28,22 +28,62 @@ create table if not exists STATION(no int,
 	primary key(no,train_no), 
 	constraint foreign key(train_no) references TRAIN(train_No));
 
-create table if not exists TRAIN_STATUS( b_seats1 int,b_seats2 int,a_seats1 int,a_seats2 int, w_seats1 int, w_seats2 int,fare1 float,fare2 float,train_no int primary key,constrain
-t foreign key(train_no) references TRAIN(train_No));
+create table if not exists TRAIN_STATUS(b_seats1 int,
+	b_seats2 int,
+	a_seats1 int,
+	a_seats2 int, 
+	w_seats1 int, 
+	w_seats2 int,
+	fare1 float,
+	fare2 float,
+	train_no int primary key,
+	constraint foreign key(train_no) references TRAIN(train_No));
 
-create table if not exists TICKET(id int primary key,user_id int,status char,no_of_passengers int,train_no int,constraint foreign key(user_id) references USER(user_id),constraint foreign key(train_no) references TRAIN(train_no));
+create table if not exists TICKET(id int primary key,
+	user_id int,
+	status char,
+	no_of_passengers int,
+	train_no int,
+	constraint foreign key(user_id) references USER(user_id),
+	constraint foreign key(train_no) references TRAIN(train_no));
 
-create table if not exists PASSENGER(passenger_id int primary key,pnr_no int,age int,gender char,user_id int,reservation_status char,seat_number varchar(5),name varchar(50),ticket_id int,constraint foreign key(user_id) references USER(user_id),constraint foreign key(ticket_id) references TICKET(id));
+create table if not exists PASSENGER(passenger_id int primary key,
+		pnr_no int,
+		age int,
+		gender char,
+		user_id int,
+		reservation_status char,
+		seat_number varchar(5),
+		name varchar(50),
+		ticket_id int,
+		constraint foreign key(user_id) references USER(user_id),
+		constraint foreign key(ticket_id) references TICKET(id));
 
-create table if not exists STARTS(train_no int, station_no int, constraint foreign key(train_no) references TRAIN(train_no), constraint foreign key(station_no) references STATION(no));
+create table if not exists STARTS(train_no int, 
+	station_no int, 
+	constraint foreign key(train_no) references TRAIN(train_no), 
+	constraint foreign key(station_no) references STATION(no));
 
-create table if not exists STOPS_AT(train_no int,station_no int,constraint foreign key(train_no) references TRAIN(train_no),constraint foreign key(station_no) references STATION(no));
+create table if not exists STOPS_AT(train_no int,
+	station_no int,
+	constraint foreign key(train_no) references TRAIN(train_no),
+	constraint foreign key(station_no) references STATION(no));
 
-create table if not exists REACHES(train_no int,station_no int,time time,constraint foreign key(train_no) references TRAIN(train_no),constraint foreign key(station_no) references STATION(no));
+create table if not exists REACHES(train_no int,
+	station_no int,
+	time time,
+	constraint foreign key(train_no) references TRAIN(train_no),
+	constraint foreign key(station_no) references STATION(no));
 
-create table if not exists BOOKS( user_id int,id int,constraint foreign key(user_id) references USER(user_id),constraint foreign key(id) references TICKET(id));
+create table if not exists BOOKS( user_id int,
+	id int,constraint foreign key(user_id) references USER(user_id),
+	constraint foreign key(id) references TICKET(id));
 
-create table if not exists CANCEL(user_id int,id int,passenger_id int,constraint foreign key(id) references TICKET(id),constraint foreign key (passenger_id) references PASSENGER(passenger_id),constraint foreign key(user_id) references USER(user_id));
+create table if not exists CANCEL(user_id int,
+	id int,passenger_id int,
+	constraint foreign key(id) references TICKET(id),
+	constraint foreign key (passenger_id) references PASSENGER(passenger_id),
+	constraint foreign key(user_id) references USER(user_id));
 
 ###insertions
 
