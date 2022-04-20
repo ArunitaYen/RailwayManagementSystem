@@ -145,19 +145,35 @@ select t.* from TRAIN t,STATION s,REACHES r
 		and r.station_no=s.no 
 		and s.name like 'vijayawada';
 
-select r.*,s.name from REACHES r,STATION s where r.station_no=s.no;
+select r.*,s.name from REACHES r,STATION s 
+	where r.station_no=s.no;
 
-select u.* from USER u,CANCEL c,TICKET t where c.user_id=u.user_id and c.id=t.id and t.train_no like 12711;
+select u.* from USER u,CANCEL c,TICKET t 
+	where c.user_id=u.user_id 
+		and c.id=t.id 
+		and t.train_no like 12711;
 
-select ts.train_no,ts.fare1,t.train_name from TRAIN_STATUS ts,TRAIN t where t.train_no=ts.train_no order by fare1 asc;
+select ts.train_no,ts.fare1,t.train_name from TRAIN_STATUS ts,TRAIN t 
+	where t.train_no=ts.train_no 
+		order by fare1 asc;
 
-select p.* from PASSENGER p,TRAIN t,TICKET tc where tc.train_no=t.train_no and tc.id=p.ticket_id and t.train_name like 'pinakini exp';
+select p.* from PASSENGER p,TRAIN t,TICKET tc 
+	where tc.train_no=t.train_no 
+		and tc.id=p.ticket_id 
+		and t.train_name like 'pinakini exp';
 
-select distinct t.* from TRAIN t,STATION s,STARTS st,STOPS_AT sa where st.station_no=(select no from STATION where name like 'tirupathi') and sa.station_no=(select no from STATION where name like 'vijayawada') order by d;
+select distinct t.* from TRAIN t,STATION s,STARTS st,STOPS_AT sa 
+	where st.station_no=(select no from STATION where name like 'tirupathi') 
+		and sa.station_no=(select no from STATION where name like 'vijayawada') 
+			order by d;
 
-select train_no from STATION group by train_no having max(hault);
+select train_no from STATION 
+	group by train_no 
+		having max(hault);
 
-select t.* from TICKET t where t.status like 'c' and t.train_no=12711;
+select t.* from TICKET t 
+	where t.status like 'c' 
+		and t.train_no=12711;
 
 
 ###########Roles
