@@ -88,27 +88,62 @@ create table if not exists CANCEL(user_id int,
 ###insertions
 
 
-insert into USER(user_id, first_name,last_name,adhar_no, gender, age,mobile_no,email,city,state, pincode,_password, security_ques, security_ans) values(1701, 'vijay','sharma','309887340843', 'M',34,'9887786655','vijay1@gmail.com','vijayawada', 'andhrapradesh','520001','12345@#','favouritecolour','red'),(1702, 'rohith','kumar', '456709871234', 'M',45,'9809666555', 'rohith Ikumar@gmail.com','guntur', 'andhrapradesh','522004','12@#345', 'favouritebike', 'bmw'), (1703,'manasvi', 'sree','765843210987','F',20,'9995550666','manas vi57@gmail.com','guntur', 'andhra pradesh', '522004', '0987hii', 'favourite flower', 'rose');
+insert into USER(user_id, first_name,last_name,adhar_no, gender, age,mobile_no,email,city,state, pincode,_password, security_ques, security_ans) 
+	values(1701, 'vijay','sharma','309887340843', 'M',34,'9887786655','vijay1@gmail.com','vijayawada', 'andhrapradesh','520001','12345@#','favouritecolour','red'),
+	(1702, 'rohith','kumar', '456709871234', 'M',45,'9809666555', 'rohith Ikumar@gmail.com','guntur', 'andhrapradesh','522004','12@#345', 'favouritebike', 'bmw'), 
+	(1703,'manasvi', 'sree','765843210987','F',20,'9995550666','manas vi57@gmail.com','guntur', 'andhra pradesh', '522004', '0987hii', 'favourite flower', 'rose');
 
-insert into TRAIN(train_no,train_name,arrival_time, departure_time,availability_of_seats,d) values(12711, 'pinakini exp','113000', '114000','A',20170410), (12315,'cormandel exp','124500','125000', 'NA' ,20170410);
+insert into TRAIN(train_no,train_name,arrival_time, departure_time,availability_of_seats,d) 
+	values(12711, 'pinakini exp','113000', '114000','A',20170410), 
+	(12315,'cormandel exp','124500','125000', 'NA' ,20170410);
 
-insert into STATION(no,name,hault, arrival_time,train_no) values(111, 'vijayawada',10,'113000',12711),(222, 'tirupathi',5,'114500',12315);
+insert into STATION(no,name,hault, arrival_time,train_no) 
+	values(111, 'vijayawada',10,'113000',12711),
+	(222, 'tirupathi',5,'114500',12315);
 
-insert into TRAIN_STATUS(train_no,w_seats1,b_seats1,b_seats2,a_seats1,a_seats2,w_seats2,fare1,fare2) values(12711,10,4,0,1,1,0,100,450),(12315,10,5,0,0,2,1,300,600);
+insert into TRAIN_STATUS(train_no,w_seats1,b_seats1,b_seats2,a_seats1,a_seats2,w_seats2,fare1,fare2) 
+	values
+	(12711,10,4,0,1,1,0,100,450),
+	(12315,10,5,0,0,2,1,300,600);
 
-insert into TICKET(id,user_id, status,no_of_passengers,train_no) values(4001,1701,'C',1,12711),(4002,1702,'N',1,12315);
+insert into TICKET(id,user_id, status,no_of_passengers,train_no) 
+	values
+	(4001,1701,'C',1,12711),
+	(4002,1702,'N',1,12315);
 
-insert into PASSENGER(passenger_id,pnr_no,age, gender,user_id,reservation_status,seat_number,name,ticket_id) values(5001,78965,45,'M',1701,'C' ,'B645','ramesh',4001),(5002,54523,54, 'F',1701, 'W','B321','surekha',4002);
-insert into STARTS(train_no,station_no) values(12711,111),(12315,222);
-insert into STOPS_AT(train_no,station_no) values(12711,222),(12315,111);
-insert into REACHES(train_no,station_no,time) values(12711,222,'040000'), (12315,111,'053500');
+insert into PASSENGER(passenger_id,pnr_no,age, gender,user_id,reservation_status,seat_number,name,ticket_id) 
+	values
+	(5001,78965,45,'M',1701,'C' ,'B645','ramesh',4001),
+	(5002,54523,54, 'F',1701, 'W','B321','surekha',4002);
+	
+insert into STARTS(train_no,station_no) 
+	values
+	(12711,111),
+	(12315,222);
+	
+insert into STOPS_AT(train_no,station_no) 
+	values
+	(12711,222),
+	(12315,111);
+	
+insert into REACHES(train_no,station_no,time) 
+	values
+	(12711,222,'040000'), 
+	(12315,111,'053500');
 
-insert into BOOKS(user_id,id) values(1701,4001),(1702,4002);
-insert into CANCEL(user_id,id, passenger_id) values(1701,4001,5001);
+insert into BOOKS(user_id,id) 
+	values(1701,4001),(1702,4002);
+	
+insert into CANCEL(user_id,id, passenger_id) 
+	values(1701,4001,5001);
 
-select * from PASSENGER where ticket_id like 4001;
+select * from PASSENGER 
+	where ticket_id like 4001;
 
-select t.* from TRAIN t,STATION s,REACHES r where t.train_no=r.train_no and r.station_no=s.no and s.name like 'vijayawada';
+select t.* from TRAIN t,STATION s,REACHES r 
+	where t.train_no=r.train_no 
+		and r.station_no=s.no 
+		and s.name like 'vijayawada';
 
 select r.*,s.name from REACHES r,STATION s where r.station_no=s.no;
 
