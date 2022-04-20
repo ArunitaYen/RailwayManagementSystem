@@ -1,8 +1,32 @@
-create table if not exists USER (user_id int primary key,first_name varchar(50),last_name varchar(50),adhar_no varchar(20) ,gender enum('m','f'),age tinyint, mobile_no varchar(12),email varchar(50),city varchar(50), state varchar(50),pincode varchar(6),_password varchar(50),security_ques varchar(50),security_ans varchar(50));
+create table if not exists USER (user_id int primary key,
+	first_name varchar(50),
+	last_name varchar(50),
+	adhar_no varchar(20),
+	gender enum('m','f'),
+	age tinyint, 
+	mobile_no varchar(12),
+	email varchar(50),
+	city varchar(50), 
+	state varchar(50),
+	pincode varchar(6),
+	_password varchar(50),
+	security_ques varchar(50),
+	security_ans varchar(50));
 
-create table if not exists TRAIN(train_no int primary key,train_name varchar(50),arrival_time time,departure_time time,availability_of_seats char(10), d date);
+create table if not exists TRAIN(train_no int primary key,
+	train_name varchar(50),
+	arrival_time time,
+	departure_time time,
+	availability_of_seats char(10), 
+	d date);
 
-create table if not exists STATION(no int ,name varchar(50),hault int, arrival_time time,train_no int, primary key(no,train_no), constraint foreign key(train_no) references TRAIN(train_No));
+create table if not exists STATION(no int,
+	name varchar(50),
+	hault int, 
+	arrival_time time,
+	train_no int, 
+	primary key(no,train_no), 
+	constraint foreign key(train_no) references TRAIN(train_No));
 
 create table if not exists TRAIN_STATUS( b_seats1 int,b_seats2 int,a_seats1 int,a_seats2 int, w_seats1 int, w_seats2 int,fare1 float,fare2 float,train_no int primary key,constrain
 t foreign key(train_no) references TRAIN(train_No));
